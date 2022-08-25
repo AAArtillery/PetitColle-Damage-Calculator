@@ -1,0 +1,20 @@
+<h1>ぷちコレ最大ダメージ簡易計算機</h1>
+総合 総攻アピール：<input id="appeal0"><br>
+衣装 強属性値　：<input id="appeal1"><br>
+衣装 弱属性値１：<input id="appeal2"><br>
+衣装 弱属性値２：<input id="appeal3"><br>
+<input type="button" value="計算" onclick="calc()">
+<br><br>
+<strong>最大ダメージ：<span id="result"></span></strong><br><br>
+計算式：<br>衣装攻撃値/15.5 + 450)切り上げ * 総攻アピール/50 * 1.07[ルームLv7前提] - 90000)切り上げ
+<script>
+function calc() {
+    var gatk = Number(document.getElementById("appeal0").value);
+    var val1 = Number(document.getElementById("appeal1").value);
+    var val2 = Number(document.getElementById("appeal2").value);
+    var val3 = Number(document.getElementById("appeal3").value);
+    var catk = val1*10 + val2 + val3;
+    var rslt = Math.ceil(Math.ceil(catk/15.5 + 450) * gatk/50 * 1.07 - 90000);
+    document.getElementById("result").innerText = rslt;
+}
+</script>
